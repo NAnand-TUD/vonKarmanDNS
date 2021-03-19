@@ -1,0 +1,109 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.4.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     icoFoam;     // opt icoFoam simpleFoam pisoFoam pimpleFoam
+
+startFrom       latestTime;  // opt: firstTime startTime latesTime
+
+startTime       0;           // opt: 0 
+
+stopAt          endTime;     // opt: endTime writeNow noWriteNow nextWrite
+
+endTime         65;
+
+deltaT		0.0022;
+
+writeControl    runTime; // opt: timeStep runTime adjustableRunTime cpuTime clockTime
+
+writeInterval   0.25;
+
+purgeWrite      0; // opt: overwrites directories to limit number of time directories. 0 = no overwriting 
+
+writeFormat     ascii;
+
+writePrecision  12;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   12;
+
+runTimeModifiable no;
+
+adjustTimeStep  yes;
+
+maxCo           0.3;
+
+functions
+{
+	#includeFunc vorticity
+	#includeFunc probesPrim
+	#includeFunc probesVort
+
+	forces
+	{
+
+		#includeEtc "caseDicts/postProcessing/forces/forcesIncompressible.cfg"
+
+		rhoInf      1.0;    // Fluid density
+		patches     (cylinderWalls);
+
+		CofR        (0 0 0);	
+		pitchAxis   (0 1 0);
+		
+		log true;
+		utputControl runTime;
+		outputInterval 0.25;
+	}
+
+	forceCoeffs
+	{
+		// rhoInf - reference density
+        // CofR - Centre of rotation
+        // dragDir - Direction of drag coefficient
+        // liftDir - Direction of lift coefficient
+        // pitchAxis - Pitching moment axis
+        // magUinf - free stream velocity magnitude
+        // lRef - reference length
+        // Aref - reference area
+
+		type forceCoeffs;
+		functionObjectLibs ("libforces.so");
+        patches (cylinderWalls);
+		pName p;
+		Uname U;
+		rho rhoInf;
+		rhoInf 1.0;
+		
+		//Dump to file
+		log true;
+		CofR (0.0 0 0);
+		liftDir (0 1 0);
+		dragDir (1 0 0);
+		pitchAxis (0 0 1);
+		magUInf 1.0;
+		lRef 1.0; // reference lenght
+		Aref 1.0; // reference area 1 for 2d
+    
+		utputControl runTime;
+		outputInterval 0.25;
+	}
+
+}
+// ************************************************************************* //
+

@@ -1,0 +1,33 @@
+probesVort
+
+ {
+
+ functionObjectLibs ( "libsampling.so");
+ 
+ type probes;
+
+ name probes;
+ 
+ writeControl runTime;
+
+ writeInterval 0.25;
+ 
+ fields (
+
+	vorticity
+
+ );
+
+
+ probeLocations
+
+  (
+
+    (1.0 0.0 0) // behind the cylinder
+    (10 2.5 0) // in the wake 
+
+
+  );
+
+
+  }
