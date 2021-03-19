@@ -1,6 +1,7 @@
 // Gmsh project created on Wed Sep 30 21:41:07 2015
 // Author: Martin Einarsve
 // Modified by Vassilis Theofilis on Apr 18, 2017
+// Modified by Kamil Dylewicz on Dec 12, 2020
 
 Nx1 = 70; Rx1 = 1.00;
 Nx2 = 150; Rx2 = 1.00;
