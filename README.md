@@ -16,7 +16,7 @@ This work has been carried out by Kamil Dylewicz as part of the Advanced Fluid M
 
 # References
 * Ausoni, P., Farhat, M., Ait Bouziad, Y., Kueny, J.-L. & Avellan, F. (2006), Karman vortex shedding in the wake of a 2d hydrofoil: Measurement and numerical simulation, in `IAHR Int. Meeting of WG on Cavitation and Dynamic Problems in Hydraulic Machinery and Systems', number CONF.
-* Geuzaine, C. & Remacle, J.-F. (2009), `Gmsh: A 3-d finite element mesh generator with built-in pre-and postprocessing facilities', International journal for numerical methods in engineering 79(11), 1309{1331.
+* Geuzaine, C. & Remacle, J.-F. (2009), `Gmsh: A 3-d finite element mesh generator with built-in pre-and postprocessing facilities', International journal for numerical methods in engineering 79(11), 1309-1331.
 * OpenCFD (2019). URL: https://openfoam.com/
 * OpenCFD (2018). URL: https://www.openfoam.com/documentation/guides/latest/doc/guide-applications-solvers-incompressible-icoFoam.html
 * Larsen, A. (2000), `Aerodynamics of the tacoma narrows bridge-60 years later', Structural Engineering International 10(4), 243-248.
